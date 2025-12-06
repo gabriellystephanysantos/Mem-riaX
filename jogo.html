@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória Progressivo</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="tela-inicial-jogo" class="screen show">
+        <img id="logo-inicial" src="imagens/logo.png" alt="Logo do Jogo da Memória">
+        <h1>Jogo da Memória Progressivo</h1>
+        <p class="descricao">Complete os 3 níveis (Fácil, Médio, Difícil) para registrar sua pontuação final.</p>
+        
+        <button id="btnIniciarJogo">Iniciar Jogo</button>
+
+        <div id="ranking-container">
+            <h2>🏆 Ranking Global (3 Níveis)</h2>
+            <p>(Pontuação é a soma de tentativas nos 3 níveis - Menor é melhor)</p>
+            <ul id="ranking-list">
+                </ul>
+        </div>
+    </div>
+
+    <div id="tela-jogo" class="screen hide">
+        <img id="game-logo" src="imagens/logo.png" alt="Logo do Jogo" />
+        
+        <div class="controls">
+            <p id="level-display">Nível: 1 (4 Pares)</p> 
+            <button id="btnVoltar">Voltar</button>
+        </div>
+        
+        <div id="board">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
