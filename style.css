@@ -1,0 +1,305 @@
+/* --- VARIÁVEIS DE COR E TAMANHO --- */
+:root {
+  --card-size: 140px;
+  --gap: 12px;
+  --color-bg: #e3f2fd;
+  --color-card-front: #64b5f6;
+  --color-card-back: #fff59d;
+  --color-btn: #ffb74d;
+  --color-btn-hover: #ffa726;
+  --color-text: #424242;
+  --color-accent: #ce93d8;
+  --color-match: #4caf50;
+}
+
+body {
+  font-family: 'Nunito', 'Poppins', Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, visibility 0.3s;
+  top: 0;
+  left: 0;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#tela-inicial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #a5d6a7, #64b5f6);
+  color: white;
+  padding: 20px;
+  width: 97%;
+  height: 100%;
+}
+
+#tela-inicial-jogo {
+  padding-top: 50px;
+
+  background: linear-gradient(135deg, #a5d6a7, #64b5f6);
+  color: white;
+}
+
+#logo-inicial {
+  width: 300px;
+  max-width: 90%;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+#logo-inicial:hover {
+  transform: scale(1.05);
+}
+#tela-inicial h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+#tela-inicial .descricao {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+#tela-inicial button,
+.controls button {
+  background-color: var(--color-btn);
+  color: white;
+  font-size: 1.3rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+}
+#tela-inicial button:hover,
+.controls button:hover {
+  background-color: var(--color-btn-hover);
+  transform: scale(1.05);
+}
+
+#tela-jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1920px;
+}
+
+#tela-inicial-jogo button,
+.controls button {
+  background-color: var(--color-btn);
+  color: white;
+  font-size: 1.3rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+}
+#tela-inicial-jogo button:hover,
+.controls button:hover {
+  background-color: var(--color-btn-hover);
+  transform: scale(1.05);
+}
+
+#game-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#game-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#game-logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+#level-display {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  font-weight: bold;
+  margin: 0;
+}
+
+#board {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: var(--gap);
+  padding: 20px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 95vw;
+}
+
+.card {
+  width: var(--card-size);
+  height: var(--card-size);
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 12px;
+  position: relative;
+}
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+  border-radius: 12px;
+}
+.card.flipped .inner {
+  transform: rotateY(180deg);
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  border: 3px solid var(--color-accent);
+  overflow: hidden;
+}
+
+.front {
+  background-color: var(--color-card-front);
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+}
+.back {
+  background-color: var(--color-card-back);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--color-text);
+  font-weight: bold;
+  user-select: none;
+}
+.card:active {
+  transform: scale(0.97);
+  transition: transform 0.1s;
+}
+
+.card.is-matched {
+  pointer-events: none;
+  cursor: default;
+}
+
+.card.is-matched .front {
+  background-color: var(--color-match) !important;
+  border-color: var(--color-match) !important;
+  box-shadow: 0 0 10px var(--color-match);
+}
+
+.card.is-matched .back {
+  border-color: var(--color-match) !important;
+}
+
+.card.flipped .face {
+  border-color: var(--color-match);
+}
+
+#ranking-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: var(--color-text);
+  max-width: 400px;
+  width: 90%;
+}
+
+#ranking-container h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  color: #4caf50;
+  text-shadow: none;
+}
+
+#ranking-list {
+  list-style: none;
+  padding: 0;
+}
+
+#ranking-list li {
+  font-size: 1.1rem;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+#ranking-list li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --card-size: 100px;
+    --gap: 8px;
+  }
+  .controls {
+    justify-content: space-around;
+  }
+}
